@@ -29,9 +29,8 @@ const scraperObject = {
             if (item.querySelector('img')) {
               const id = item.querySelector('a').getAttribute('itemid');
               const link = item.querySelector('a').href;
-              const imgSrc = item.querySelector('img').src;
+              const imgSrc = item.querySelector('img').dataset.original;
               const name = item.querySelector('.box-sub-name').textContent;
-
               const newPrice = item.querySelectorAll('.es-font')[0].textContent.replace('¥', '');
               const oldPrice = item.querySelectorAll('.es-font')[1].textContent.replace('¥', '');
               const tags = [...item.querySelectorAll('.box-sub-tag')].map(item => item.textContent);
@@ -65,7 +64,7 @@ const scraperObject = {
       await fs.writeJson('./data.json', totalData, {
         spaces: 2
       });
-      console.log('Save susscess!');
+      console.log('Save susscessed!');
     } catch (err) {
       console.log(err);
     }
